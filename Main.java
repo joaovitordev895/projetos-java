@@ -1,26 +1,47 @@
-import conta.conta;
-import carros.modelos;
+import dadosdoproduto.Produto;
+
+
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicStampedReference;
 
 public class Main {
-    static void main() {
+    public static void main(String[] args) {
 
 Scanner scanner= new Scanner(System.in);
 
-        conta conta = new conta();
-        conta.cadastro();
+   Produto produto = new Produto();
 
-        System.out.println("=============================================");
+        System.out.println("insira os dados do produto");
 
-        System.out.println("os modelos de carros");
-        System.out.println("============================================");
-        System.out.println("gol ");
-    System.out.println("tesla");
-        System.out.println("ferrari");
-        System.out.println("fiat");
-        System.out.println("=============================================");
+        System.out.println("nome do produto");
+        produto.nome = scanner.nextLine();
 
-        modelos modelos = new modelos();
-        modelos.escolhermodelos();
+        System.out.println("preco do produto");
+        produto.preco = scanner.nextDouble();
+
+        System.out.println("quantidade no estoque");
+        produto.quantidade = scanner.nextInt();
+
+        System.out.println("dados do produto: " );
+        System.out.println(produto.nome);
+        System.out.println(produto.preco);
+        System.out.println(produto.quantidade);
+        System.out.println(produto);
+
+        System.out.println();
+        System.out.println("adicionar produtos no estoque: ");
+        int quantidade = scanner.nextInt();
+        produto.adicionarprodutos(quantidade);
+
+        System.out.println();
+        System.out.println("dados atualizados: " + produto);
+
+        System.out.println();
+        System.out.println("remover produtos do estoque: ");
+        int quantidadeRemover= scanner.nextInt();
+        produto.removerprodutos(quantidade);
+
+        System.out.println();
+        System.out.println("dados atualizados: " + produto);
     }
 }
